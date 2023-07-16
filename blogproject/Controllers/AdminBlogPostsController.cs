@@ -52,7 +52,6 @@ namespace blogproject.Controllers
                 PageTittle = addBlogPostRequest.PageTittle,
                 Content = addBlogPostRequest.Content,
                 ShortDescription = addBlogPostRequest.ShortDescription,
-                FeaturedImageUrl = addBlogPostRequest.FeaturedImageUrl,
                 UrlHandle = addBlogPostRequest.UrlHandle,
                 PublishedDate = addBlogPostRequest.PublishedDate,
                 Author = addBlogPostRequest.Author,
@@ -74,7 +73,8 @@ namespace blogproject.Controllers
             blogPostDomainModel.Tags = selectedTags;
 
             await blogPostRepository.AddAsync(blogPostDomainModel);
-            return View();
+            //return View();
+            return RedirectToAction("List");
         }
 
         [HttpGet]

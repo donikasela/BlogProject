@@ -25,7 +25,9 @@ namespace blogproject.Repositories
 
         public async Task<IEnumerable<BlogPost>> GetAllAsync()
         {
-            return await blogprojectDbContext.BlogPosts.ToListAsync();
+            return await blogprojectDbContext.BlogPosts.Include(x => x.Tags).ToListAsync();
+            //brings all the blogposts back, BlogPosts table we want to connect with
+            //Include will include the tags from the BlogPost table that it is trying to connect
         }
 
         public Task<BlogPost?> GetAsync(Guid id)

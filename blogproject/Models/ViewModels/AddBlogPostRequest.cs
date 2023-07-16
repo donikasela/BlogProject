@@ -15,8 +15,6 @@ namespace blogproject.Models.ViewModels
 
         public string ShortDescription { get; set; }
 
-        public string FeaturedImageUrl { get; set; }
-
         public string UrlHandle { get; set; }
 
         public string Author { get; set; }
