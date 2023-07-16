@@ -1,11 +1,12 @@
-﻿using blogproject.Models;
+﻿using blogproject.Data;
+using blogproject.Models;
 using blogproject.Models.ViewModels;
 using blogproject.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.Rendering; //SelectListItem
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace blogproject.Controllers
@@ -15,7 +16,7 @@ namespace blogproject.Controllers
         private readonly ITagRepository tagRepository;
         private readonly IBlogPostRepository blogPostRepository;
 
-        // Constructor with dependency injection of repositories
+        // Inject the repositories through constructor injection
         public AdminBlogPostsController(ITagRepository tagRepository, IBlogPostRepository blogPostRepository)
         {
             this.tagRepository = tagRepository;
@@ -31,26 +32,20 @@ namespace blogproject.Controllers
             // Create a view model to pass the tags to the view
             var model = new AddBlogPostRequest
             {
-                Tags = tags?.Select(x => new SelectListItem
+                Tags = tags.Select(x => new SelectListItem
                 {
                     Text = x.Name,
                     Value = x.id.ToString() // Convert the GUID to a string 
-                }) ?? Enumerable.Empty<SelectListItem>()
+                })
             };
-            return View(model); // Render the Add.cshtml view with the view model
+
+            return View(model); // The view binds to the AddBlogPostRequest model
         }
 
         [HttpPost]
         public async Task<IActionResult> Add(AddBlogPostRequest addBlogPostRequest)
         {
-            // Validate the model
-            if (!ModelState.IsValid)
-            {
-                // If the model is invalid, re-render the view with validation errors
-                return View(addBlogPostRequest);
-            }
-
-            // Create a new BlogPost domain model and populate its properties
+            // Map view model to domain model
             var blogPostDomainModel = new BlogPost
             {
                 Heading = addBlogPostRequest.Heading,
@@ -63,38 +58,33 @@ namespace blogproject.Controllers
                 Author = addBlogPostRequest.Author,
             };
 
-            // Map selected tags from the view model to the domain model
+            // Map tags from selected tags
             var selectedTags = new List<Tag>();
-            foreach (var selectedTagId in addBlogPostRequest.SelectedTags)
+            foreach (var selectedTagId in addBlogPostRequest.SelectedTags) // These are the tags coming in the request
             {
-                // Parse the selected tag ID from the string to a Guid
-                if (Guid.TryParse(selectedTagId, out var selectedTagGuid))
+                var selectedTagIdAsGuid = Guid.Parse(selectedTagId);
+                var existingTag = await tagRepository.GetAsync(selectedTagIdAsGuid);
+                if (existingTag != null)
                 {
-                    // Fetch the existing tag from the repository using the ID
-                    var existingTag = await tagRepository.GetAsync(selectedTagGuid);
-                    if (existingTag != null)
-                    {
-                        selectedTags.Add(existingTag);
-                    }
+                    selectedTags.Add(existingTag);
                 }
             }
 
-            // Map the selected tags back to the domain model
+            // Map tags back to the domain model
             blogPostDomainModel.Tags = selectedTags;
 
-            // Add the new BlogPost to the repository
             await blogPostRepository.AddAsync(blogPostDomainModel);
-
-            // After successful addition, redirect to the List action
-            return RedirectToAction("List");
+            return View();
         }
 
         [HttpGet]
+        // Display the list of blog posts
         public async Task<IActionResult> List()
         {
-            // Fetch all BlogPosts from the repository
+            // Call the repository to get the data from the database
             var blogPosts = await blogPostRepository.GetAllAsync();
-            return View(blogPosts); // Render the List.cshtml view with the BlogPosts
+
+            return View(blogPosts);
         }
     }
 }
