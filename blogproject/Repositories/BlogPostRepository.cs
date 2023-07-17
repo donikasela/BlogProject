@@ -30,19 +30,46 @@ namespace blogproject.Repositories
             //Include will include the tags from the BlogPost table that it is trying to connect
         }
 
-        public Task<BlogPost?> GetAsync(Guid id)
+
+        public async Task<BlogPost?> GetAsync(Guid id)
         {
-            throw new NotImplementedException();
+           return await blogprojectDbContext.BlogPosts.Include(x => x.Tags).FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public Task<BlogPost?> UpdateAsync(BlogPost blogPost)
+        public async Task<BlogPost?> UpdateAsync(BlogPost blogPost)
         {
-            throw new NotImplementedException();
+            var existingBlog = await blogprojectDbContext.BlogPosts.Include(x => x.Tags).FirstOrDefaultAsync(x => x.Id == blogPost.Id);
+
+            if (existingBlog != null)
+            {
+                existingBlog.Id = blogPost.Id;
+                existingBlog.Heading = blogPost.Heading;
+                existingBlog.PageTittle = blogPost.PageTittle;
+                existingBlog.Content = blogPost.Content;
+                existingBlog.ShortDescription = blogPost.ShortDescription;
+                existingBlog.UrlHandle = blogPost.UrlHandle;
+                existingBlog.PublishedDate = blogPost.PublishedDate;
+                existingBlog.Author = blogPost.Author ;
+                existingBlog.Tags = blogPost.Tags;
+
+                await blogprojectDbContext.SaveChangesAsync();
+                return existingBlog;
+            }
+            return null; 
         }
 
-        public Task<BlogPost?> DeleteAsync(Guid id)
+        public async Task<BlogPost?> DeleteAsync(Guid id)
         {
-            throw new NotImplementedException();
+            //qurey the database
+            var existingBlog = await blogprojectDbContext.BlogPosts.FindAsync(id);
+
+            if (existingBlog!=null)
+            {
+                blogprojectDbContext.BlogPosts.Remove(existingBlog);
+                await blogprojectDbContext.SaveChangesAsync();
+                return existingBlog;
+            }
+            return null;
         }
     }
 }

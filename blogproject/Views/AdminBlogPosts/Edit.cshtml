@@ -1,0 +1,75 @@
+﻿@model blogproject.Models.ViewModels.EditBlogPostRequest
+@{
+}
+
+<div class="bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <h1 class="display-4">Edit New Blog Post - Admin Functionality</h1>
+    </div>
+</div>
+
+<div class="container py-5">
+    @if (Model != null)
+    {
+        <form method="post">
+            <div class="mb-3">
+                <label>Id</label>
+                <input type="text" class="form-control" id="id" asp-for="Id" readonly />
+            </div>
+            <div class="mb-3">
+                <label>Heading</label>
+                <input type="text" class="form-control" id="heading" asp-for="Heading" />
+            </div>
+
+            <div class="mb-3">
+                <label>Page Title</label>
+                <input type="text" class="form-control" id="pageTittle" asp-for="PageTittle" />
+            </div>
+
+            <div class="mb-3">
+                <label>Content</label>
+                <textarea class="form-control" id="content" asp-for="Content"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label>Short Description</label>
+                <input type="text" class="form-control" id="shortDescription" asp-for="ShortDescription" />
+            </div>
+
+            <div class="mb-3">
+                <label>Url Handle</label>
+                <input type="text" class="form-control" id="urlHandle" asp-for="UrlHandle" />
+            </div>
+
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label>Published Date</label>
+                    <input type="date" class="form-control" id="publishedDate" asp-for="PublishedDate" />
+                </div>
+                <div class="col-md-6">
+                    <label>Author</label>
+                    <input type="text" class="form-control" id="author" asp-for="Author" />
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Tags</label>
+                <select class="form-select" id="tags"
+                        asp-for="SelectedTags"
+                        asp-items="@Model.Tags">
+                </select>
+            </div>
+            <div class="mb-3 d-flex">
+                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="submit" class="btn btn-danger ms-2" asp-area="" asp-controller="AdminBlogPosts" asp-action="Delete">
+                    Delete Tag
+                </button>
+            </div>
+        </form>
+    }
+    else
+    {
+        <p>No blog Posts Found</p>
+    }
+</div>
