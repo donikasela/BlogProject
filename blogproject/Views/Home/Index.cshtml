@@ -1,9 +1,50 @@
-﻿@{
+﻿@model List<blogproject.Models.BlogPost>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="hero bg-light text-center py-5">
+    <div class="container">
+        <h1>Welcome to The Blog Project</h1>
+        <p class="lead">Discover blog posts on various topics.</p>
+    </div>
+</section>
 
+<section class="blog-posts mt-5">
+    <div class="container">
+        <div class="row">
+            @if (Model != null && Model.Any())
+            {
+                @foreach (var blogPost in Model)
+                {
+                    <div class="col-md-6 mb-4">
+                        <div class="card box-shadow h-100">
+                            <div class="card-body">
+                                <h2 class="card-title">@blogPost.Heading</h2>
+                                <p class="card-text">
+                                    Author: @blogPost.Author
+                                    <br /> Published Date: @blogPost.PublishedDate.ToShortDateString()
+                                </p>
+                                <p class="card-text">
+                                    @foreach (var tag in blogPost.Tags)
+                                    {
+                                        <span class="badge bg-secondary me-1">@tag.Name</span>
+                                    }
+                                </p>
+                                <p class="card-text">@blogPost.ShortDescription</p>
+                                <a href="#" class="btn btn-outline-dark" asp-action="">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-md-12">
+                    <p>No blog posts found.</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>

@@ -1,9 +1,12 @@
 ﻿@model List<blogproject.Models.BlogPost>
+@{
+    ViewData["Title"] = "Blog Post List";
+}
 <div class="bg-secondary bg-opacity-10 p-4 mb-4">
-        <h1 class="display-4">All Blog Posts - Admin Functionality</h1>
+    <h1 class="display-4">All Blog Posts - Admin Functionality</h1>
 </div>
 <div class="container py-5">
-  
+
     <div class="table-responsive">
         @if (Model != null && Model.Any())
         {
