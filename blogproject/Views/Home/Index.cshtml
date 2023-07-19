@@ -33,7 +33,7 @@
                                     }
                                 </p>
                                 <p class="card-text">@blogPost.ShortDescription</p>
-                                <a href="#" class="btn btn-outline-dark" asp-action="">Read More</a>
+                                <a href="@Url.Action("Details", "Home", new { id = blogPost.Id})" class="btn btn-outline-dark">Read More</a>
                             </div>
                         </div>
                     </div>

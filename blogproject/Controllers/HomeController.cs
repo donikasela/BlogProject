@@ -14,19 +14,20 @@ public class HomeController : Controller
     {
         _logger = logger;
         this.blogPostRepository = blogPostRepository;
+
     }
 
     public async Task<IActionResult> Index()
     {
-        var blogPosts = await blogPostRepository.GetAllAsync();
-
-
+        //get all blogs
+        var blogPosts = await blogPostRepository.GetAllAsync(); 
         return View(blogPosts); 
     }
 
-    public IActionResult Privacy()
+    public async Task<IActionResult>Details(Guid id)
     {
-        return View();
+        var blogPosts = await blogPostRepository.GetAsync(id);
+        return View(blogPosts);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
