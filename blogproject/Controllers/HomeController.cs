@@ -8,7 +8,7 @@ namespace blogproject.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-    private readonly IBlogPostRepository blogPostRepository;
+    private readonly IBlogPostRepository blogPostRepository; 
 
     public HomeController(ILogger<HomeController> logger, IBlogPostRepository blogPostRepository)
     {
@@ -29,7 +29,7 @@ public class HomeController : Controller
         var blogPosts = await blogPostRepository.GetAsync(id);
         return View(blogPosts);
     }
-
+     
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
