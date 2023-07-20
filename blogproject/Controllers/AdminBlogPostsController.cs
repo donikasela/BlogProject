@@ -1,11 +1,14 @@
-﻿using blogproject.Models;
+﻿using System.Data;
+using blogproject.Models;
 using blogproject.Models.ViewModels;
 using blogproject.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering; //SelectListItem
 
 namespace blogproject.Controllers
 {
+    [Authorize(Roles = "Admin,SuperAdmin")]
     public class AdminBlogPostsController : Controller
     {
         private readonly ITagRepository tagRepository;

@@ -6,7 +6,7 @@ namespace blogproject.Data
 {
     public class BlogprojectDbContext : DbContext
     {
-        public BlogprojectDbContext(DbContextOptions options) : base(options)
+        public BlogprojectDbContext(DbContextOptions<BlogprojectDbContext> options) : base(options)
         {
         }
         public DbSet <BlogPost> BlogPosts { get; set; }
