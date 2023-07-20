@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,11 +16,76 @@ namespace blogproject.Data
         {
             base.OnModelCreating(builder);
 
+            var adminRoleId = "af25b134-5e1f-48d1-b480-0c8b89f3f6f7";
+            var superAdminRoleId = "e4340a6f-0afd-4e2c-bdfc-2f6077e52203";
+            var userRoleId = "150e67d4-0212-4a72-9add-db8d2279bd2e";
+
             //seed the roles
+            var roles = new List<IdentityRole>
+            {
+                new IdentityRole
+                {
+                    Name = "Admin",
+                    NormalizedName = "Admin",
+                    Id = adminRoleId,
+                    ConcurrencyStamp = adminRoleId,
+                },
+
+                new IdentityRole
+                {
+                    Name = "SuperAdmin",
+                    NormalizedName = "SuperAdmin",
+                    Id = superAdminRoleId,
+                    ConcurrencyStamp = superAdminRoleId,
+                },
+                new IdentityRole
+                {
+                    Name ="User",
+                    NormalizedName = "User",
+                    Id = userRoleId,
+                    ConcurrencyStamp = userRoleId,
+                }
+            };
+
+            //to be seeded into the database
+            builder.Entity<IdentityRole>().HasData(roles);
+            //entity framework wen it runs this line it will insert the var roles into the database
 
             //seed superadmin user
+            var superAdminId = "08ec430d-b58e-431e-889b-cf4bdab98a6a";
+            var superAdminUser = new IdentityUser
+            {
+                UserName = "blogproject",
+                Email = "superadmin@blogproject.com",
+                NormalizedEmail = "superadmin@blogproject.com",
+                NormalizedUserName = "superadmin@blogproject.com",
+                Id = superAdminId,
+            };
+            superAdminUser.PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(superAdminUser, "blogproject123");
+            builder.Entity<IdentityUser>().HasData(superAdminUser);
 
-            //Add all the roles to superadminuser
+            //Add all the roles to superadminuser, give the superAdminUser all the roles
+
+            var superAdminRoles = new List<IdentityUserRole<string>>
+            {
+                new IdentityUserRole<string>
+                {
+                    RoleId = adminRoleId,
+                    UserId = superAdminId,
+                },
+                  new IdentityUserRole<string>
+                {
+                    RoleId = superAdminRoleId,
+                    UserId = superAdminId,
+                },
+                    new IdentityUserRole<string>
+                {
+                    RoleId = userRoleId,
+                    UserId = superAdminId,
+                },
+            };
+
+            builder.Entity<IdentityUserRole<string>>().HasData(superAdminRoles);
         }
     }
 }
