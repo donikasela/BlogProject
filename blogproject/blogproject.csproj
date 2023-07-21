@@ -23,7 +23,7 @@
     <None Remove="Models\ViewModels\" />
     <None Remove="Views\AdminBlogPosts\" />
     <None Remove="Repositories\" />
-    <None Remove="Views\Admin\" />
+    <None Remove="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
@@ -31,6 +31,6 @@
     <Folder Include="Models\ViewModels\" />
     <Folder Include="Views\AdminBlogPosts\" />
     <Folder Include="Repositories\" />
-    <Folder Include="Views\Admin\" />
+    <Folder Include="Views\Account\" />
   </ItemGroup>
 </Project>

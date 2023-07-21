@@ -2,7 +2,6 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))
     {
@@ -19,7 +18,10 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link btn btn-link text-dark" href="/account/logout">Log Out</a>
+            <form id="logoutForm" asp-controller="Account" asp-action="Logout" method="post" class="form-inline">
+               
+                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+            </form>
         </li>
     }
     else

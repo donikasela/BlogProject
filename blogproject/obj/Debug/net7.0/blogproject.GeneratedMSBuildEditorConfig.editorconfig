@@ -16,8 +16,8 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/donika/Desktop/blogproject/blogproject
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/donika/Desktop/blogproject/blogproject/Views/Admin/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vTG9naW4uY3NodG1s
+[/Users/donika/Desktop/blogproject/blogproject/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/donika/Desktop/blogproject/blogproject/Views/AdminBlogPosts/Add.cshtml]

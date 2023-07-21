@@ -1,6 +1,7 @@
 ﻿using blogproject.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace blogproject.Controllers
 {
@@ -14,6 +15,7 @@ namespace blogproject.Controllers
         }
 
         // GET: /Account/Login
+        [HttpGet]
         public IActionResult Login()
         {
             return View();
@@ -21,7 +23,7 @@ namespace blogproject.Controllers
 
         // POST: /Account/Login
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model, string? returnUrl = null)
+        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
             if (ModelState.IsValid)
             {
@@ -31,7 +33,7 @@ namespace blogproject.Controllers
                 if (result.Succeeded)
                 {
                     // Redirect to admin panel or any other page after successful login
-                    return RedirectToAction("Index", "AdminBlogPosts");
+                    return RedirectToAction("Index");
                 }
                 else
                 {
@@ -41,6 +43,15 @@ namespace blogproject.Controllers
             }
 
             return View(model);
+        }
+
+        // POST: /Account/Logout
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

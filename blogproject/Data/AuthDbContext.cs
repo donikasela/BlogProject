@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace blogproject.Data
 {
@@ -21,7 +22,7 @@ namespace blogproject.Data
             var userRoleId = "150e67d4-0212-4a72-9add-db8d2279bd2e";
 
             //seed the roles
-            var roles = new List<IdentityRole>
+            var roles = new List<IdentityRole>()
             {
                 new IdentityRole
                 {
