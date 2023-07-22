@@ -33,7 +33,16 @@ namespace blogproject.Controllers
                 if (result.Succeeded)
                 {
                     // Redirect to admin panel or any other page after successful login
-                    return RedirectToAction("Index");
+                    if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                    {
+                        // Redirect to the original URL if it's a local URL
+                        return Redirect(returnUrl);
+                    }
+                    else
+                    {
+                        // Otherwise, redirect to the Index action of the HomeController
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
                 else
                 {
@@ -44,6 +53,7 @@ namespace blogproject.Controllers
 
             return View(model);
         }
+
 
         // POST: /Account/Logout
         [HttpPost]
