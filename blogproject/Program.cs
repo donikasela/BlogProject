@@ -1,5 +1,6 @@
 ﻿using blogproject.Data;
 using blogproject.Repositories;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,11 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<BlogprojectDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("BlogprojectDbConnectionString")));
 //the way to inject the dbcontext inside the services of our applications
+
+builder.Services.AddDbContext<AuthDbContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("BlogprojectAuthDbConnectionString")));
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AuthDbContext>();
 
 //injecting the itagsinterfacerepo
 builder.Services.AddScoped<ITagRepository, TagRepository>();
@@ -30,6 +36,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

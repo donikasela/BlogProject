@@ -9,8 +9,8 @@
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.8" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.8">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.9">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
@@ -23,6 +23,7 @@
     <None Remove="Models\ViewModels\" />
     <None Remove="Views\AdminBlogPosts\" />
     <None Remove="Repositories\" />
+    <None Remove="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
@@ -30,5 +31,6 @@
     <Folder Include="Models\ViewModels\" />
     <Folder Include="Views\AdminBlogPosts\" />
     <Folder Include="Repositories\" />
+    <Folder Include="Views\Account\" />
   </ItemGroup>
 </Project>

@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using blogproject.Data;
 using blogproject.Models;
 using blogproject.Models.ViewModels;
 using blogproject.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 
 namespace blogproject.Controllers
 {
+    [Authorize(Roles = "Admin,SuperAdmin")]
     public class AdminTagsController : Controller
     {
         private readonly ITagRepository tagRepository;

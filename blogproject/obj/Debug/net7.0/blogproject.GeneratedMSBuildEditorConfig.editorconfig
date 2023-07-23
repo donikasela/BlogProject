@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/donika/Desktop/blogproject/blogproject
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/donika/Desktop/blogproject/blogproject/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/donika/Desktop/blogproject/blogproject/Views/AdminBlogPosts/Add.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5CbG9nUG9zdHMvQWRkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -50,6 +54,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Users/donika/Desktop/blogproject/blogproject/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/donika/Desktop/blogproject/blogproject/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/donika/Desktop/blogproject/blogproject/Views/Shared/_ValidationScriptsPartial.cshtml]

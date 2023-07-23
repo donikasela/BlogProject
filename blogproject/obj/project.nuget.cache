@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "s616f97ulCgJILprq6dR9GsVT2opUeqw3QLwY1K1rM+Pj7ICKURbOAus7fVRT6eKxOZAJ96UFH2j0KE1CpdxBA==",
+  "dgSpecHash": "fZO3lyZfWnozCDfg5KJ0Fz5xyuIc2aL4l/SMP/F4kwazBkneNXa8GXNqTt4xVcnHAHaaK2vLs33ncRruBlS0Fw==",
   "success": true,
   "projectFilePath": "/Users/donika/Desktop/blogproject/blogproject/blogproject.csproj",
   "expectedPackageFiles": [
@@ -17,10 +17,10 @@
     "/Users/donika/.nuget/packages/microsoft.entityframeworkcore/7.0.9/microsoft.entityframeworkcore.7.0.9.nupkg.sha512",
     "/Users/donika/.nuget/packages/microsoft.entityframeworkcore.abstractions/7.0.9/microsoft.entityframeworkcore.abstractions.7.0.9.nupkg.sha512",
     "/Users/donika/.nuget/packages/microsoft.entityframeworkcore.analyzers/7.0.9/microsoft.entityframeworkcore.analyzers.7.0.9.nupkg.sha512",
-    "/Users/donika/.nuget/packages/microsoft.entityframeworkcore.design/7.0.8/microsoft.entityframeworkcore.design.7.0.8.nupkg.sha512",
+    "/Users/donika/.nuget/packages/microsoft.entityframeworkcore.design/7.0.9/microsoft.entityframeworkcore.design.7.0.9.nupkg.sha512",
     "/Users/donika/.nuget/packages/microsoft.entityframeworkcore.relational/7.0.9/microsoft.entityframeworkcore.relational.7.0.9.nupkg.sha512",
-    "/Users/donika/.nuget/packages/microsoft.entityframeworkcore.sqlserver/7.0.8/microsoft.entityframeworkcore.sqlserver.7.0.8.nupkg.sha512",
-    "/Users/donika/.nuget/packages/microsoft.entityframeworkcore.tools/7.0.8/microsoft.entityframeworkcore.tools.7.0.8.nupkg.sha512",
+    "/Users/donika/.nuget/packages/microsoft.entityframeworkcore.sqlserver/7.0.9/microsoft.entityframeworkcore.sqlserver.7.0.9.nupkg.sha512",
+    "/Users/donika/.nuget/packages/microsoft.entityframeworkcore.tools/7.0.9/microsoft.entityframeworkcore.tools.7.0.9.nupkg.sha512",
     "/Users/donika/.nuget/packages/microsoft.extensions.caching.abstractions/7.0.0/microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
     "/Users/donika/.nuget/packages/microsoft.extensions.caching.memory/7.0.0/microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
     "/Users/donika/.nuget/packages/microsoft.extensions.configuration.abstractions/7.0.0/microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
